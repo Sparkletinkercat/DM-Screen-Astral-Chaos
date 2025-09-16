@@ -1,3 +1,6 @@
+### DM Screen
+Just something I have been working on in my free time. This is heavily a w.i.p and it is designed to make gming easier for dms who play D&D, but it needs a lot of work to get there. 
+
 ### Installations
 You will need node.js, npm, you will also need to setup a mysql database (you can use my sql workbench for this) and you will need to create the following ".env" file and update the parameters. The password is for your database. The .env file should be placed in the root of the project.
 

@@ -13,8 +13,8 @@ const Campaign = sequelize.define("Campaign", {
     allowNull: false 
   }
 }, {
-  tableName: "campaign", // exact table name in MySQL
-  timestamps: false      // disable createdAt/updatedAt if not present
+  tableName: "campaign", 
+  timestamps: false      
 });
 
 
@@ -30,8 +30,8 @@ const Campaign_Settings = sequelize.define("Campaign_Settings", {
     allowNull: false 
   }
 }, {
-  tableName: "campaign_settings", // exact table name in MySQL
-  timestamps: false      // disable createdAt/updatedAt if not present
+  tableName: "campaign_settings", 
+  timestamps: false      
 });
 
 
@@ -59,8 +59,8 @@ const Players = sequelize.define("Players", {
     allowNull: true
   }
 }, {
-  tableName: "player",   // matches your MySQL table exactly
-  timestamps: false      // disable createdAt/updatedAt since table has none
+  tableName: "player",   
+  timestamps: false      
 });
 
 
@@ -95,7 +95,7 @@ const Characters = sequelize.define("Characters", {
     type: Sequelize.INTEGER,
     allowNull: true
   },
-  inititive: {    // note: maybe you meant "initiative"
+  inititive: {   
     type: Sequelize.INTEGER,
     allowNull: true
   },
@@ -121,7 +121,7 @@ const Characters = sequelize.define("Characters", {
     onDelete: "CASCADE"
   }
 }, {
-  tableName: "character", // match your MySQL table exactly
+  tableName: "character", 
   timestamps: false
 });
 

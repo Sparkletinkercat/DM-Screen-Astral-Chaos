@@ -1,0 +1,35 @@
+OK, I built that out for you.
+
+It's available here:
+
+https://muna.ironarachne.com/dwarf/?count=30&nameType=female
+
+Available races:
+
+dragonborn
+
+dwarf
+
+elf
+
+gnome
+
+goblin
+
+halfling
+
+halfelf
+
+halforc
+
+human
+
+orc
+
+tiefling
+
+troll
+
+Query string parameters are count and nameType. 
+Count can be any integer, and defaults to 10. 
+NameType can be male, female, or family and defaults to male.

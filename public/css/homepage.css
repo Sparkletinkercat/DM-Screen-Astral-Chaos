@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+DK+Uloopet:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-image: url("../images/lumi full.png");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#main-body {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    height: 100vh;
+    width: 45%;
+    background-color: white;
+    box-shadow: 23px 5px 16px -11px rgba(0,0,0,1);
+-webkit-box-shadow: 23px 5px 16px -11px rgba(0,0,0,1);
+-moz-box-shadow: 23px 5px 16px -11px rgba(0,0,0,1);
+}
+
+.tabcontent {
+    background-color: aliceblue;
+}
+
+#img-container {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#logo {
+    width:20%;
+}
+
+#titleHeading {
+    margin: 20px; 
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#titleHeading > h1,h3 {font-family: "Playwrite DK Uloopet", cursive; }
+
+button {font-family: "Playwrite DK Uloopet", cursive; }
+h1,h3 {font-family: "Roboto", sans-serif;}
+
+p, label {font-family: "Roboto", sans-serif;}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/css/homepage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script src="/js/script.js"></script>
+</head>
+<body>
+    <div id="main-body">
+        <div id="heading">
+            <div id="img-container">
+                <img id="logo" src="../images/logo.png">
+                <div id="titleHeading">
+                    <H1 > Astral Chaos's Online GM Screen</H1>
+                    <h3>Created by Sparkletinkercat</h3>
+                </div>
+                
+            </div>
+            
+            
+        </div>
+
+        <!-- Tab links -->
+        <div class="tab">
+            <button class="tablinks" onclick="openTab('CurrentCampaigns')">Current Campaigns</button>
+            <button class="tablinks" onclick="openTab('CreateCampaign')">Create a new Campaign</button>
+        </div>
+
+        <!-- Tab content -->
+        <div id="CreateCampaign" class="tabcontent">
+            <h3>Create a Campaign</h3>
+            <form action="/addCampaign" method="post">
+                <label for="campaignName">Campaign Name:</label>
+                <input type="text" id="campaignName" name="campaignName" required>
+                <button type="submit">Add Campaign</button>
+            </form>
+        </div>
+
+        <div id="CurrentCampaigns" class="tabcontent">
+            <h3>Current Campaigns</h3>
+            <ul>
+            <% campaigns.forEach(function(campaign) { %>
+                <li>
+                    <p><%= campaign.name %></p>
+                    <form action="/Campaign/<%= campaign.name %>" method="post" style="display:inline;">
+                        <input type="hidden" name="campaignId" value="<%= campaign.id %>">
+                        <input type="hidden" name="campaignName" value="<%= campaign.name %>">
+                        <button type="submit">Enter Campaign</button>
+                    </form>
+                    <form action="/deleteTable/<%= campaign.id %>" method="post" onsubmit="confirmForm(event, 'Are you certain you want to delete this campaign permenently?')" style="display:inline;">
+                        <!-- Hidden Form Details -->
+                        <input class="url" type="hidden" name="url" value="None">
+                        <!-- ------------------- -->
+                        
+                        <input type="hidden" name="tableName" value="Campaign">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+        </div>
+    </div>
+    
+    
+    
+    <script>
+        defaultTab("CreateCampaign");
+        getUrlDetails();
+    </script>
+</body>
+</html>

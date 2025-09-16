@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Campaign Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script src="/js/script.js"></script>
+</head>
+<body>
+    <h1>Welcome to <%= campaignName %></h1>
+    
+    <!-- Tab links -->
+    <div class="tab">
+        <button class="tablinks" onclick="openTab('generateNames')">Generate Npc Names</button>
+        <button class="tablinks" onclick="openTab('players')">Players</button>
+        <button class="tablinks" onclick="openTab('characters')">Characters</button>
+        <button class="tablinks" onclick="openTab('mainPage')">Main Page</button>
+    </div>
+
+    <!-- Tab content -->
+    <div id="mainPage" class="tabcontent">
+
+    </div>
+
+    <div id="players" class="tabcontent">
+        <h3>Add a player</h3>
+        <form action="/addPlayer" method="post">
+            <!-- Hidden Form Details -->
+            <input type="hidden" name="campaignName" value=<%= campaignName %>>
+            <input type="hidden" name="campaignId" value=<%= campaignId %>>
+
+            <!-- ------------------- -->
+
+            <label for="playerName">Player Name:</label>
+            <input type="text" id="playerName" name="playerName" required><br><br>
+
+            <label for="pronouns"> Player Pronouns:</label>
+            <textarea id="pronouns" name="pronouns" rows="4" cols="50"></textarea><br><br>
+
+            <label for="triggers"> Player Triggers:</label>
+            <textarea id="triggers" name="triggers" rows="4" cols="50"></textarea><br><br>
+
+            <label for="notes"> Player Notes:</label>
+            <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br><br>
+
+            <button type="submit">Add Player</button>
+        </form>
+
+        <h3>List of current players</h3>
+        <% players.forEach(function(player) { %>
+            <div>
+                <h4>Player Name</h4>
+                <%= player.name %>
+                <h4>Player Pronouns</h4>
+                <%= player.pronouns %>
+                <h4>Player Triggers</h4>
+                <%= player.triggers %>
+                <h4>Player Notes</h4>
+                <%= player.notes %>
+                <p>======================</p>
+
+                <form action="/deleteTable/<%= player.id %>" method="post" onsubmit="confirmForm(event, 'Are you certain you want to delete this player permenently?')" style="display:inline;">
+                    <!-- Hidden Form Details -->
+                    <input class="url" type="hidden" name="url" value="None">
+                    <!-- ------------------- -->
+                    
+                    <input type="hidden" name="tableName" value="Players">
+                    
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% }); %>
+    </div>
+
+    <div id="characters" class="tabcontent">
+        <h3>Add a character</h3>
+        <form action="/addCharacter" method="post">
+            <!-- Hidden Form Details -->
+            <input type="hidden" name="campaignName" value=<%= campaignName %>>
+            <input type="hidden" name="campaignId" value=<%= campaignId %>>
+
+            <!-- ------------------- -->
+
+            <label for="characterName">Character Name:</label>
+            <input type="text" id="characterName" name="character_name" required><br><br>
+
+            <label for="senses">Senses:</label>
+            <input type="text" id="senses" name="senses"><br><br>
+
+            <label for="armorClass">Armor Class:</label>
+            <input type="number" id="armorClass" name="armor_class"><br><br>
+
+            <label for="passiveStealth">Passive Stealth:</label>
+            <input type="number" id="passiveStealth" name="passive_stealth"><br><br>
+
+            <label for="passivePerception">Passive Perception:</label>
+            <input type="number" id="passivePerception" name="passive_perception"><br><br>
+
+            <label for="passiveInvestigation">Passive Investigation:</label>
+            <input type="number" id="passiveInvestigation" name="passive_investigation"><br><br>
+
+            <label for="inititive">Inititive:</label>
+            <input type="number" id="inititive" name="inititive"><br><br>
+
+            <label for="backgroundNotes">Background Notes:</label>
+            <textarea id="backgroundNotes" name="background_notes" rows="4" cols="50"></textarea><br><br>
+
+            <label for="backgroundFeature">Background Feature:</label>
+            <textarea id="backgroundFeature" name="background_feature" rows="4" cols="50"></textarea><br><br>
+
+            <label for="characterNotes">Character Notes:</label>
+            <textarea id="characterNotes" name="notes" rows="4" cols="50"></textarea><br><br>
+
+            <label for="playerName">Player Name:</label>
+            <select id="playerId" name="player_id" required>
+                <% players.forEach(function(player) { %>
+                    <option value="<%= player.id %>"><%= player.name %></option>
+                <% }); %>
+            </select><br><br>
+
+            <button type="submit">Add Character</button>
+        </form>
+
+        <h3>List of current characters</h3>
+        <% characters.forEach(function(character) { %>
+            <div>
+                <h4>Character Name</h4>
+                <p><%= character.character_name %></p>
+
+                <h4>Senses</h4>
+                <p><%= character.senses %></p>
+
+                <h4>Armor Class</h4>
+                <p><%= character.armor_class %></p>
+
+                <h4>Passive Stealth</h4>
+                <p><%= character.passive_stealth %></p>
+
+                <h4>Passive Perception</h4>
+                <p><%= character.passive_perception %></p>
+
+                <h4>Passive Investigation</h4>
+                <p><%= character.passive_investigation %></p>
+
+                <h4>Initiative</h4>
+                <p><%= character.inititive %></p>
+
+                <h4>Background Notes</h4>
+                <p><%= character.background_notes %></p>
+
+                <h4>Background Feature</h4>
+                <p><%= character.background_feature %></p>
+
+                <h4>Character Notes</h4>
+                <p><%= character.notes %></p>
+
+                <p>======================</p>
+
+                <form action="/deleteTable/<%= character.id %>" method="post" onsubmit="confirmForm(event, 'Are you certain you want to delete this player permenently?')" style="display:inline;">
+                    <!-- Hidden Form Details -->
+                    <input class="url" type="hidden" name="url" value="None">
+                    <!-- ------------------- -->
+                    
+                    <input type="hidden" name="tableName" value="Characters">
+                    
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
+        <% }); %>
+    </div>
+
+
+    <div id="generateNames" class="tabcontent">
+        <button  onclick="fetchNames('10')">Click 4 names</button>
+        
+        <!-- Div for storing all the names generated -->
+        <div id="namesTab"></div>
+    </div>
+    
+    <script>
+        defaultTab("mainPage");
+        getUrlDetails();
+    </script>
+
+</body>
+</html>
